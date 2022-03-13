@@ -1,0 +1,23 @@
+{
+  "projects": [
+    {
+      "id": 2,
+      "title": "Make marketing email LOL",
+      "details": "Lorem ipsum",
+      "complete": false,
+      "tdetails": "Lorem ipsum LOL"
+    },
+    {
+      "title": "web designer",
+      "details": "lorem lorem ops",
+      "complete": true,
+      "id": 3
+    },
+    {
+      "title": "Jogar",
+      "details": "Jogar rocketleague",
+      "complete": true,
+      "id": 4
+    }
+  ]
+}
