@@ -18,15 +18,13 @@ export default {
   components: { Spinner },
   setup(props) {
     const { post, error, load } = getPost(props.id)
-
     load()
-
     return { post, error }
   }
 }
 </script>
 
-<style>
+<style scoped>
   .post {
     max-width: 1200px;
     margin: 0 auto;
