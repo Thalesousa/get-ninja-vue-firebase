@@ -1,4 +1,5 @@
 import { ref } from 'vue'
+import { Delay } from './LoadingDelay'
 
 export const getPosts = () => {
   const posts = ref([])
@@ -6,6 +7,7 @@ export const getPosts = () => {
 
   const load = async () => {
     try {
+      await Delay(2000)
       let data = await fetch('http://localhost:3000/posts')
       if(!data.ok) {
         throw Error('no data available')
