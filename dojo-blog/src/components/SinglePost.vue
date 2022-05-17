@@ -4,12 +4,14 @@
       <h3>{{post.title}}</h3>
     </router-link>
     <p>{{snippet}}</p>
-    <span v-for="tag in post.tags" :key="tag">#{{tag}}</span>
+    <span v-for="tag in post.tags" :key="tag">
+      <router-link class="link-tag" :to="{ name: 'tag', params: {tag:tag} }"># {{tag}}</router-link>
+    </span>
   </div>
 </template>
 
 <script>
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
 export default {
   props:['post'],
   setup(props) {
@@ -46,5 +48,18 @@ export default {
     padding-right: 40px;
     left: -30px;
     transform: rotateZ(-1deg);
+  }
+
+  span {
+    display: inline-block;
+  }
+
+  span + span {
+    margin-left: 10px;
+  }
+
+  .link-tag {
+    text-decoration: none;
+    color: #b7660a;
   }
 </style>
