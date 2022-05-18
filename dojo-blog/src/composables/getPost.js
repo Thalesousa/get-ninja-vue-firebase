@@ -1,5 +1,5 @@
 import { ref } from 'vue'
-import { Delay } from './LoadingDelay'
+import { projectFirestore } from '@/firebase/config'
 
 export const getPost = (id) => {
   const post = ref(null)
@@ -7,12 +7,12 @@ export const getPost = (id) => {
 
   const load = async () => {
     try {
-      await Delay(2000)
-      let data = await fetch(`http://localhost:3000/posts/${id}`)
-      if(!data.ok) {
-        throw Error('that post does not exist')
+      let res = await projectFirestore.collection('posts').doc(id).get()
+
+      if(!res.exists) {
+        throw Error('That post does not exist')
       }
-      post.value = await data.json()
+      post.value = { ...res.data(), id: res.id }
     }
     catch (err){
       error.value = err.message
